@@ -1,6 +1,8 @@
 # Melody's Tweaker
 This program can be used to tweak several aspects of the Windows System.
 
+![screenshot](https://github.com/SheMelody/melodys-tweaker/assets/20774468/4ade6c2a-3f1e-4806-8f82-53d24d1cccb2)
+
 The following elements can be controlled:
 - Change System Scheduler's policies:
   - Scheduling Longevity
