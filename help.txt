@@ -1,0 +1,11 @@
+Win32PrioritySeparation specifies the strategy used for optimizing processor time on this system. The value of this entry determines, in part, how much processor time the threads of a process receive each time they are scheduled, and how much the allotted time can vary. It also affects the relative priority of the threads of foreground and background processes.
+
+Scheduling Longevity:
+Determines how long the threads of processes are permitted to run each time they are scheduled. This interval is specified as a range because threads can be preempted and processor time is not precisely determined.
+
+Processor time length:
+Determines whether the length of processor time is fixed (always the same length) or varies. It also determines whether the threads of foreground processes have longer processor intervals than those of background processes. If the processor interval is fixed, that interval applies equally to the threads of foreground and background processes. If the processor interval varies, the length of time each thread runs varies, but the ratio of processor time of foreground threads to background threads is fixed.
+If a variable interval is specified, the ratio of foreground thread processor time to background thread processor time is determined by the value of the Foreground to background boost ratio.
+
+Foreground to background boost ratio:
+Determines the ratio of processor time of foreground to background threads. This value is used only when the Processor time length specifies a variable-length interval. Otherwise, the processor interval for foreground and background threads is the same.

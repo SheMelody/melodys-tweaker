@@ -1,0 +1,54 @@
+Win32PrioritySeparation specifies the strategy used for optimizing processor time on this system. The value of this entry determines, in part, how much processor time the threads of a process receive each time they are scheduled, and how much the allotted time can vary. It also affects the relative priority of the threads of foreground and background processes.
+
+Scheduling Longevity:
+Determines how long the threads of processes are permitted to run each time they are scheduled. This interval is specified as a range because threads can be preempted and processor time is not precisely determined.
+• If performance is important, use Longer intervals.
+• If latency is important, use Shorter intervals.
+
+Processor time length:
+Determines whether the length of processor time is fixed (always the same length) or varies. It also determines whether the threads of foreground processes have longer processor intervals than those of background processes. If the processor interval is fixed, that interval applies equally to the threads of foreground and background processes. If the processor interval varies, the length of time each thread runs varies, but the ratio of processor time of foreground threads to background threads is fixed.
+If a variable interval is specified, the ratio of foreground thread processor time to background thread processor time is determined by the value of the Foreground to background boost ratio.
+• If performance is important, use Variable-length intervals.
+• If latency is important, use Fixed-length intervals.
+
+Foreground to background boost ratio:
+Determines the ratio of processor time of foreground to background threads. This value is used only when the Processor time length specifies a variable-length interval. Otherwise, the processor interval for foreground and background threads is the same.
+• If performance is important, use 3:1 or 2:1.
+• If latency is important, use Equal and fixed.
+
+MMCSS (Multimedia Class Scheduling Service):
+MMCSS is a service that manages priority of 8 tasks in Windows 10: Audio, Capture, DisplayPostProcessing, Distribution, Games, Playback, Pro Audio and Window Manager.
+This service generally affects latency in a bad way when it comes to responsiveness, since it will synchronize all these tasks together to prevent audio crackling, video desync and other problems.
+This service is also available in Windows 7, but it's less aggressive.
+• If performance is important, turn this service ON.
+• If latency is important, turn this service OFF.
+
+CSRSS (Client-Server Runtime Process / Client-Server Runtime Subsystem):
+CSRSS is the process that provides the user mode side of the Win32 subsystem, and is also responsible of creating and deleting system threads. Increasing the priority of this process can dramatically improve mouse input responsiveness and GPU throughput (mining / computing).
+• If performance is important, set to Automatic.
+• If latency is important, set to Real Time Priority.
+
+DWM (Desktop Window Manager):
+DWM is the service that provides the Desktop Environment. Increasing the priority of this process when using fullscreen optimizations, borderless fullscreen mode or windowed mode can dramatically improve mouse input responsiveness. It doesn't affect exclusive fullscreen mode unless fullscreen optimizations are enabled.
+• If performance is important, set to Automatic.
+• If latency is important, set to Real Time Priority.
+
+DAM (Desktop Activity Moderator):
+DAM is a Windows 10 service that automatically boosts or deprioritizes foreground threads based on usage.
+• If performance is important, turn this service ON.
+• If latency is important, turn this service OFF.
+
+BAM (Background Activity Moderator):
+BAM is a Windows 10 service that automatically boosts or deprioritizes background threads based on usage.
+• If performance is important, turn this service ON.
+• If latency is important, turn this service OFF.
+
+GraphicsPerfSvc (Graphics Performance Service):
+GraphicsPerfSvc is a telemetry and optimization service that analyzes GPU performance, generates a report and accordingly tweaks the Graphics Subsystem.
+• If performance is important, turn this service ON.
+• If latency is important, turn this service OFF.
+
+AudioSrv ErrorControl (Audio Service Error Control):
+The Error Control value of the Audio Service allows to fix sound problems related to MMCSS deactivation.
+• If you're having issues with sound after disabling MMCSS, try Severe.
+• Use Normal if you're not experiencing issues with sound.
